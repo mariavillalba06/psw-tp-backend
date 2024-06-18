@@ -1,0 +1,48 @@
+<div class="container">
+    <h1 class="text-center">Venta de Tickets</h1>
+    <form #f="ngForm">
+        <div class="formulario">
+            <div class="mb-3">
+                <label for="espectador" class="form-label">Elegir espectador:</label>
+                    <select class="form-select" name="responsable" [(ngModel)]="ticket.espectador">
+                      <option *ngFor="let e of espectadores" [ngValue]="e" >{{e.apellido}}, {{e.nombre}}</option>
+                    </select>
+            </div>
+            <div class="mb-3">
+                <label for="fechaCompra" class="form-label">Fecha de compra:</label>
+                <input type="date" id="fechaCompra" name="fechaCompra" class="form-control"
+                    [(ngModel)]="ticket.fechaCompra" required />
+            </div>
+            <div class="mb-3">
+                <label for="precioTicket" class="form-label">Precio Ticket:</label>
+                <input type="number" id="precioTicket" name="precioTicket" class="form-control"
+                    [(ngModel)]="ticket.precioReal" required placeholder="Ingrese el precio del ticket" />
+            </div>
+            <div class="mb-3">
+                <label for="tipoEspectador" class="form-label">Tipo de Espectador:</label>
+                <select id="tipoEspectador" name="tipoEspectador" class="form-select"
+                    [(ngModel)]="ticket.categoriaEspectador" required>
+                    <option value="l">Local</option>
+                    <option value="e">Extranjero</option>
+                </select>
+            </div>
+            <div class="mb-3" *ngIf="mostrarPrecioCobrado()">
+                <label class="form-label">Precio Cobrado:</label>
+                <input class="form-control" name="precioCobrado" [(ngModel)]="ticket.precioCobrado"
+                    value="{{ticket.precioCobrado}}" disabled />
+            </div>
+
+            <button *ngIf="accion == 'new'" type="submit" class="btn btn-primary" (click)="registrarVenta()"
+                [disabled]="f.invalid">
+                Registrar
+            </button>
+            <button *ngIf="accion == 'update'" type="submit" class="btn btn-primary" (click)="actualizarVenta()" [disabled]="f.invalid">
+                Actualizar
+            </button>
+        </div>
+    </form>
+    <div class="text-end">
+        <button type="button" class="btn btn-success btn-lg" (click)="listado()">IR AL LISTADO</button>
+    </div>
+    
+</div>

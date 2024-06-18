@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header">
+        GESTION DE PRODUCTOS
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="mb-3">
+                <label for="idnombre" class="form-label">Nombre</label>
+                <input name="nombre" type="text" class="form-control" id="idnombre" [(ngModel)]="producto.nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="iddescripcion" class="form-label">Descripcion</label>
+                <textarea name="descripcion" class="form-control" id="iddescripcion" rows="3" [(ngModel)]="producto.descripcion" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="idprecio" class="form-label">Precio</label>
+                <input name="precio" type="number" class="form-control" id="idprecio" [(ngModel)]="producto.precio" required>
+            </div>
+            <div class="mb-3">
+                <label for="idstock" class="form-label">Stock</label>
+                <input name="stock" type="number" class="form-control" id="idstock" [(ngModel)]="producto.stock" required>
+            </div>
+            <div class="mb-3">
+                <label>¿Es un producto destacado? (Tildar por SI):</label>
+                <input type="checkbox" [(ngModel)]="producto.destacado" name="destacado">
+            </div>
+            <div class="mb-3">
+                <label for="idimagen" class="form-label">Imagen</label>
+                <input type="file" id="idimagen" accept="image/*" multiple class="form-control-file" (change)="onFileSelected($event)"/>
+
+                <img *ngIf="producto.imagen" [src]="producto.imagen" alt="Imagen del producto" style="max-width: 200px;">
+            </div>
+
+            <button type="button" class="btn btn-primary" (click)="agregarProducto()">Guardar producto</button>
+
+        </form>
+    </div>
+</div>

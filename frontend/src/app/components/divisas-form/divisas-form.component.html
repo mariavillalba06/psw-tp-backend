@@ -1,0 +1,41 @@
+<!-- FORMULARIO DE DIVISAS -->
+ <div class="container mt-3">
+    <h1 class="text-center pt-2">Conversor de Divisas</h1>
+    <button type="button" (click)="obtenerDivisas()">Divisas</button>
+    <hr>
+    <section class="bg-body-secondary rounded p-3">
+        <form>
+            <div class="mb-3">
+                <label for="email" class="form-label">Ingrese su email</label>
+                <input type="email" step="any" class="form-control" id="email"
+                    name="email" placeholder="Email" [(ngModel)]="transaccion.emailCliente">
+            </div>
+            <div class="mb-3">
+                <label for="monto" class="form-label">Ingrese el monto a convertir</label>
+                <input type="number" step="any" class="form-control" id="monto"
+                    name="monto" placeholder="Cantidad origen" [(ngModel)]="transaccion.cantidadOrigen">
+            </div>
+            <div class="mb-3">
+                <label for="monedaOrigen" class="form-label">De</label>
+                <select class="form-select" name="monedaOrigen" id="monedaOrigen" [(ngModel)]="transaccion.monedaOrigen">
+                    <option *ngFor="let d of divisas" value="{{d.symbol}}">{{d.symbol}} {{d.name}}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="monedaDestino" class="form-label">A</label>
+                <select class="form-select" name="monedaDestino" id="monedaDestino" [(ngModel)]="transaccion.monedaDestino">
+                    <option *ngFor="let d of divisas" value="{{d.symbol}}">{{d.symbol}} {{d.name}}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="resultadoConversion" class="form-label">Cantidad</label>
+                <input type="text" class="form-control" id="resultadoConversion" name="resultadoConversion" value="{{transaccion.cantidadDestino| currency}}" disabled>
+            </div>
+            <div class="text-center mb-2">
+                <button type="submit" class="btn btn-primary border-light" (click)="convertirDivisa()">Convertir</button>
+                <button type="submit" class="btn btn-success border-light" (click)="guardarTransaccion()" *ngIf="transaccion.cantidadDestino!=null">Guardar transaccion</button>
+            </div>
+        </form>
+    </section>
+    
+ </div>

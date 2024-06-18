@@ -1,0 +1,19 @@
+.navbar-custom {
+    background-color: #ff69b4;
+}
+
+.navbar-custom .nav-link,.navbar-custom .navbar-brand {
+    color: #ffffff;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.navbar-custom .nav-link:hover,.navbar-custom .navbar-brand:hover {
+    color: #ff69b4;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.icon-large{
+    font-size: 2rem;
+    padding: 0 10px;
+}
